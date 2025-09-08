@@ -1,34 +1,35 @@
-import { cn } from "@lib/utils"
-import type { Metadata } from "next"
-import { Geist_Mono, PT_Sans_Caption, Squada_One } from "next/font/google"
-import "./globals.css"
+import { Header } from "@/components/header";
+import { cn } from "@lib/utils";
+import type { Metadata } from "next";
+import { Geist_Mono, PT_Sans_Caption, Squada_One } from "next/font/google";
+import "./globals.css";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-})
+});
 
 const squadaOne = Squada_One({
   weight: "400",
   variable: "--font-squada-one",
   subsets: ["latin"],
-})
+});
 
 const ptSansCaption = PT_Sans_Caption({
   weight: "400",
   variable: "--font-pt-sans",
   subsets: ["latin"],
-})
+});
 
 export const metadata: Metadata = {
   title: "Code War",
   description: "Batalha entre programadores",
-}
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="pt-br">
@@ -37,11 +38,12 @@ export default function RootLayout({
           squadaOne.variable,
           ptSansCaption.variable,
           geistMono.variable,
-          "antialiased min-h-dvh font-pt-sans"
+          "font-pt-sans min-h-dvh antialiased",
         )}
       >
+        <Header />
         {children}
       </body>
     </html>
-  )
+  );
 }
