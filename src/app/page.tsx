@@ -1,5 +1,6 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { AuthButton } from "@/components/auth-button";
+import { Button } from "@ui/button";
+import { Input } from "@ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@ui/tabs";
 import { Play } from "lucide-react";
 import Image from "next/image";
@@ -9,7 +10,7 @@ export default function Home() {
     <main className="flex h-dvh flex-col items-center justify-center p-8">
       <div className="flex h-full w-full items-center justify-around">
         <Tabs
-          defaultValue="account"
+          defaultValue="anonymous"
           className="bg-cinder-900 text-cinder-200 h-1/2 w-[400px] rounded-2xl"
         >
           <TabsList className="bg-cinder-900 h-16 w-full gap-2 rounded-2xl p-0">
@@ -43,7 +44,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="flex w-1/2 flex-col gap-4">
-                <h1 className="text-cinder-200 text-center font-bold">
+                <h1 className="text-cinder-200 text-center text-xl font-bold">
                   Escolha um avatar e um nickname
                 </h1>
                 <Input
@@ -55,14 +56,23 @@ export default function Home() {
               </div>
             </div>
             <Button className="bg-cinder-200 hover:bg-cinder-100 focus-visible:cinder-600 h-12 w-4/6 rounded-2xl text-lg font-bold">
-              <Play className="text-cinder-900 fill-cinder-900" /> Criar sala
+              <Play className="text-cinder-900 fill-cinder-900 size-6" />
+              Criar sala
             </Button>
           </TabsContent>
           <TabsContent
             value="authenticated"
             className="flex flex-col items-center justify-center gap-8"
           >
-            Autenticado.
+            <div className="flex w-1/2 flex-col gap-4">
+              <h1 className="text-cinder-200 text-center text-xl font-bold">
+                Faça login abaixo
+              </h1>
+              <p className="text-cinder-200 text-center text-sm">
+                Apenas jogadores logados poderão acessar a sala
+              </p>
+            </div>
+            <AuthButton />
           </TabsContent>
         </Tabs>
 
